@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/finrest/__init__.py
+src/finrest/client.py
+src/finrest/models.py
+src/finrest.egg-info/PKG-INFO
+src/finrest.egg-info/SOURCES.txt
+src/finrest.egg-info/dependency_links.txt
+src/finrest.egg-info/requires.txt
+src/finrest.egg-info/top_level.txt

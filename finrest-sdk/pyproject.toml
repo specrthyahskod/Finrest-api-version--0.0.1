@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finrest"
+version = "0.1.1"
+description = "Python client SDK for the FinREST financial policy & SLM triage engine"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Riddhiman" }
+]
+dependencies = [
+    "requests>=2.28.0",
+    "pydantic>=2.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/specrthyahskod/BudgetWise-AI"
+
+[tool.setuptools.packages.find]
+where = ["src"]
