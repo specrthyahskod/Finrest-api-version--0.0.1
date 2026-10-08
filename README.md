@@ -1,13 +1,14 @@
 # FinREST & Finola SLM Engine
 
+[![PyPI version](https://img.shields.io/pypi/v/finrest.svg)](https://pypi.org/project/finrest/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg)](https://fastapi.tiangolo.com)
-[![Ollama](https://img.shields.io/badge/SLM-Llama_3.2_3B-orange.svg)](https://ollama.com)
+[![Ollama](https://img.shields.io/badge/SLM-Llama_3.2-orange.svg)](https://ollama.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**FinREST** is an offline-first financial safety and compliance runtime powered by quantized Small Language Models (SLMs) and deterministic arithmetic bounds. 
+**FinREST** is an offline-first financial safety and policy runtime powered by quantized Small Language Models (SLMs) and deterministic arithmetic bounds. 
 
-It is engineered specifically to protect international university students under **Subclass 500 visa conditions (Condition 8104/8105 work hour caps)** while providing real-time liquidity analysis and automated system issue triage via its embedded support intelligence, **Finola**.
+It is engineered specifically to protect international university students under **Subclass 500 visa conditions (Condition 8104/8105 work hour limits)** while providing real-time liquidity protection and automated issue triage via its embedded support intelligence, **Finola**.
 
 ---
 
@@ -15,31 +16,32 @@ It is engineered specifically to protect international university students under
 
 FinREST decouples fuzzy language reasoning from deterministic financial rules to eliminate LLM arithmetic hallucinations while retaining natural interaction.
 
+
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        Client Consumers                                │
 │       [ BudgetWise AI Desktop (PyQt5) ]  │  [ Web Dashboard (JS SDK) ] │
-└────────────────────────────────────┬───────────────────────────────────┘
-│ pip install finrest (REST / JSON)
-▼
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │ pip install finrest
+                                    ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│                     FinREST Gateway (FastAPI)                          │
+│                    FinREST Gateway (FastAPI)                           │
 ├────────────────────────────────────────────────────────────────────────┤
 │  1. Deterministic Financial & Policy Calculus Engine                   │
 │     • Labor shift conversion: Hours = Price / Award_Wage               │
-│     • Visa Condition 8104/8105 Compliance: (Hours + Worked) <= 48h/fn  │
-│     • Emergency Vault Threshold Validation: (Bal - Price) >= Vault     │
-│     • Daily SafeSpend Velocity: Rem_Bal / Remaining_Cycle_Days         │
+│     • Visa Condition 8104/8105: (Hours + Fortnight_Worked) <= 48h      │
+│     • Emergency Vault Threshold: (Balance - Price) >= Vault            │
+│     • Daily SafeSpend Velocity: Remaining_Bal / Cycle_Days             │
 │                                                                        │
 │  2. Asynchronous Diagnostic & Triage Worker                            │
-│     • Classifies OCR, DB, and UI anomalies                             │
+│     • Intercepts OCR, DB, and UI anomalies                             │
 │     • Background dispatch via SMTP to Administrator                    │
-└────────────────────────────────────┬───────────────────────────────────┘
-│ Pre-conditioned JSON Payload
-▼
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │ Pre-conditioned JSON Payload
+                                    ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│                     Local Inference Layer (Ollama)                     │
-│                       Model: Llama 3.2 (3B / 1B)                       │
-│     • Formulates contextual responses within strict math bounds        │
+│                    Local Inference Layer (Ollama)                      │
+│                      Model: Llama 3.2 (3B / 1B)                        │
+│     • Formulates contextual responses within verified bounds           │
 │     • Deterministic temperature (0.10) with JSON schema enforcement    │
 └────────────────────────────────────────────────────────────────────────┘
 
