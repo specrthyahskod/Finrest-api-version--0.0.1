@@ -12,7 +12,7 @@ It is engineered specifically to protect international university students under
 
 ---
 
-## 🏛️ Architecture & System Topology
+## 🏛️ SDK architecture and pipeline 
 
 FinREST decouples fuzzy language reasoning from deterministic financial rules to eliminate LLM arithmetic hallucinations while retaining natural interaction.
 
@@ -44,6 +44,7 @@ FinREST decouples fuzzy language reasoning from deterministic financial rules to
 │     • Formulates contextual responses within verified bounds           │
 │     • Deterministic temperature (0.10) with JSON schema enforcement    │
 └────────────────────────────────────────────────────────────────────────┘
+```
 
 ⚙️ Core Engineering Principles
 Deterministic Math Prior to Inference: Floating-point operations, labor hour conversions, and visa caps are computed in Python first. The language model receives concrete facts to explain, never raw math to calculate.
