@@ -2,6 +2,7 @@ import os
 import json
 import re
 import smtplib
+from datetime import datetime, timezone
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from typing import Optional, List, Dict, Any
@@ -30,6 +31,8 @@ SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
 SMTP_USER = os.getenv("SMTP_USER", "hazrapopi96@gmail.com")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+
+INCIDENT_LOG = []
 
 AU_BASE_MIN_WAGE = 24.10
 FORTNIGHT_MAX_HOURS = 48.0
@@ -208,6 +211,22 @@ def execute_finola(req: FinolaRequest, background_tasks: BackgroundTasks):
             "issue_meta": issue_meta
         }
     )
+    def record_incident(event_type: str, reason: str):
+        INCIDENTS_LOG.insert(0, {
+        "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S IST"),
+        "type": event_type,
+        "reason": reason
+    })
+    # Keep last 15 incidents
+    if len(INCIDENTS_LOG) > 15:
+        INCIDENTS_LOG.pop()
+
+@app.get("/telemetry/incidents")
+def get_incidents():
+    return {
+        "incidents": INCIDENT_LOG,
+        "total_logged": len(INCIDENT_LOG)
+    }
 
 @app.get("/health")
 def health():
