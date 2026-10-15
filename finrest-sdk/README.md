@@ -1,4 +1,4 @@
-# FinREST & Finola SLM Engine
+# FinREST & Finola Chatbot Engine
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg)](https://fastapi.tiangolo.com)
@@ -11,7 +11,7 @@ It is engineered specifically to protect international university students under
 
 ---
 
-## 🏛️ Architecture & System Topology
+## 🏛️ Project architechture
 
 FinREST decouples fuzzy language reasoning from deterministic financial rules to eliminate LLM arithmetic hallucinations while retaining natural interaction.
 
