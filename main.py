@@ -63,6 +63,7 @@ def record_incident(event_type: str, reason: str) -> None:
     if len(INCIDENT_LOG) > 20:
         INCIDENT_LOG.pop()
 
+
 class UserFinancialContext(BaseModel):
     current_balance: float = Field(default=1200.0, description="Available liquid AUD balance")
     emergency_vault: float = Field(default=500.0, description="Minimum reserve threshold")
@@ -92,6 +93,7 @@ class FinolaResponse(BaseModel):
     action_type: str
     issue_detected: bool
     diagnostics: Dict[str, Any]
+
 
 def send_admin_alert(user_id: str, original_msg: str, issue_meta: dict) -> None:
     """Sends background email alert if a client issue/bug report is triaged."""
@@ -180,11 +182,11 @@ Return ONLY valid JSON with this exact key sequence:
 """
 
 
-# --- API Routes ---
+# --- API Routes Supporting Both GET and UptimeRobot Free HEAD Requests ---
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def root():
-    """Root endpoint to verify operational status without triggering a 404."""
+    """Root endpoint to verify operational status without triggering a 404 or 405."""
     uptime_sec = int(time.time() - SERVER_START_TIME)
     return {
         "service": "FinREST Finola Intelligence Core",
@@ -200,7 +202,7 @@ def root():
     }
 
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health():
     """Health endpoint returning uptime, active model, and average latency."""
     uptime_sec = int(time.time() - SERVER_START_TIME)
@@ -220,7 +222,7 @@ def health():
     }
 
 
-@app.get("/telemetry/incidents")
+@app.api_route("/telemetry/incidents", methods=["GET", "HEAD"])
 def get_incidents():
     """Returns logged incidents, downtime reasons, and connection errors."""
     return {
@@ -310,4 +312,5 @@ def execute_finola(req: FinolaRequest, background_tasks: BackgroundTasks):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
