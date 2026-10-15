@@ -91,10 +91,13 @@ from finrest import FinREST, UserFinancialContext
 # Connect to the FinREST gateway
 client = FinREST("[http://127.0.0.1:8000](http://127.0.0.1:8000)")
 
+---
+
 # Check gateway status
 print("Gateway status:", client.health())
 
-# Define student's liquidity and visa parameters
+# Define student's assest liquidity and visa parameters
+```text
 context = UserFinancialContext(
     current_balance=1100.00,             # AUD liquid funds
     emergency_vault=500.00,              # Locked buffer
@@ -102,8 +105,9 @@ context = UserFinancialContext(
     hours_worked_this_fortnight=38.0,    # Logged hours this fortnight (cap: 48h)
     days_left_in_cycle=5                 # Days until next cycle
 )
-
+```
 # Dispatch inquiry
+```text
 response = client.chat(
     message="Can I buy Sony headphones for $350? Also the receipt OCR failed.",
     context=context
@@ -113,10 +117,13 @@ print("Finola Reply:", response.reply)
 print("Calculus Verdict:", response.diagnostics["calculus"]["verdict"])
 print("Labor Hours Needed:", response.diagnostics["calculus"]["hours_needed"])
 print("Issue Triaged:", response.issue_detected)
-🔌 API Specification
+```
+
+# 🔌 API Specification
 POST /v1/chat/finola
 Request Payload
 JSON
+```text
 {
   "user_id": "student_01",
   "message": "Can I buy a tablet for $450?",
@@ -129,8 +136,10 @@ JSON
   },
   "history": []
 }
+```
 Response Payload
 JSON
+```text
 {
   "reply": "Purchasing this leaves you with $750, safely above your emergency reserve. However, funding this purchase requires 18.7 hours of work, exceeding your remaining 16 allowable visa hours for this fortnight.",
   "action_type": "AFFORDABILITY",
@@ -154,6 +163,6 @@ JSON
 }
 
 ---
-
-📄 License
-This project is licensed under the MIT License.
+```
+# 📄 License: 
+MIT License
